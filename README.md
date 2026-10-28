@@ -9,13 +9,7 @@ py -m pip install -r requirements.txt
 py app.py
 ```
 
-Abrí http://127.0.0.1:5000
-
-## Vercel
-
-1. Subí `app.py`, `requirements.txt`, `vercel.json` y `templates/index.html` a un repositorio GitHub.
-2. En Vercel → New Project, importá el repositorio y desplegá como Flask/Python, sin Build Command.
-3. Abrí la URL, agregá un canal, mantené la página abierta para hacer monitoreo.
+Abrí [https://kickmonitor.vercel.app/](https://kickmonitor.vercel.app/)
 
 ## Datos y limitaciones
 
@@ -40,4 +34,3 @@ El panel no tiene autenticación: no subas datos confidenciales o sensibles. Los
 - Resúmenes horarios por canal guardados en el navegador hasta 400 días, incluso cuando las muestras individuales antiguas se recortan. Las muestras anteriores que sigan disponibles se agregan al abrir la versión actualizada.
 - `GET /api/stats/<canal>`: cálculo automático de grupos por hora, día y mes a partir de SQLite local (`ANALYTICS_TIMEZONE` configurable; predeterminado `America/Montevideo`).
 
-**Atención:** en Vercel sin base externa los resúmenes dependen de ese navegador y la página debe estar abierta para capturar nuevas mediciones. La aplicación no recupera historial no capturado y no ejecuta tareas de fondo. Para monitoreo continuo con página cerrada se requiere base persistente y programador externo. La retención SQLite local es de 400 días, lo que puede aumentar el tamaño de la base. Si un canal tiene muestras únicamente en otro navegador, no se sincronizan. Las estadísticas son de audiencia muestreada, no espectadores únicos.
